@@ -63,10 +63,10 @@ public class SBJMSQueueTopic {
             JMSProducer producer = jmsContext.createProducer();
             for( int loop = 0 ; loop < MAXLOOP ; loop++ ) {
                 // Create the message
-                TextMessage msg = jmsContext.createTextMessage(String.format("[%d/%d] Send to %s in %s at %s", loop + 1, MAXLOOP, enumSbProfile.getQueueName(), enumSbProfile.getSKU(), (new Date()).toString()));
+                TextMessage msg = jmsContext.createTextMessage(String.format("[%d/%d] Send to %s in %s at %s", loop + 1, MAXLOOP, enumSbProfile.getTopicName(), enumSbProfile.getSKU(), (new Date()).toString()));
                 msg.setIntProperty("number", loop);
                 // Show message
-                System.out.printf("[Enqueuing message to %s in %s] %s\n", enumSbProfile.getQueueName(), enumSbProfile.getSKU(), msg.getText());
+                System.out.printf("[Enqueuing message to %s in %s] %s\n", enumSbProfile.getTopicName(), enumSbProfile.getSKU(), msg.getText());
                 // send the message to the queue
                 producer.send(topic, msg);
             }
