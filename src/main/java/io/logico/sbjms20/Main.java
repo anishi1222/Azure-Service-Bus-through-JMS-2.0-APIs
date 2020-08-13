@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String... args) {
         if(args.length!=3) {
-            System.err.println("Two arguments are required.\njava sbjms20 {BASIC|STANDARD|PREMIUM} {QUEUE|TOPIC} {SEND|RECEIVE}");
+            System.err.println("Three arguments are required.\njava sbjms20 {BASIC|STANDARD|PREMIUM} {QUEUE|TOPIC} {SEND|RECEIVE}");
             return;
         }
 
