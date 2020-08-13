@@ -33,13 +33,13 @@ public class Main {
 
         SBJMSQueueTopic sbJMSQueueTopic = new SBJMSQueueTopic(targetSB.get());
         if(targetOperation.get().compareTo(EnumOperation.QUEUE_RECEIVE)==0) {
-            sbJMSQueueTopic.receiveQueue(targetSB.get());
+            sbJMSQueueTopic.receiveQueue();
         } else if(targetOperation.get().compareTo(EnumOperation.QUEUE_SEND)==0) {
-            sbJMSQueueTopic.sendQueue(targetSB.get());
+            sbJMSQueueTopic.sendQueue();
         } else if(targetOperation.get().compareTo(EnumOperation.TOPIC_SEND)==0) {
-            sbJMSQueueTopic.sendTopic(targetSB.get());
+            sbJMSQueueTopic.sendTopic();
         } else if(targetOperation.get().compareTo(EnumOperation.TOPIC_RECEIVE)==0) {
-            sbJMSQueueTopic.receiveTopic(targetSB.get());
+            sbJMSQueueTopic.receiveTopic();
         }
         else {
             System.err.println("specified argument is invalid");
