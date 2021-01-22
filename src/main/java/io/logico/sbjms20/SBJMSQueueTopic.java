@@ -79,16 +79,20 @@ public class SBJMSQueueTopic {
     public void receiveTopic() {
         try (JMSContext jmsContext = factory.createContext() ) {
             // Create the queue and topic
+            jmsContext.setClientID("Logico-1");
             Topic topic = jmsContext.createTopic(this.sbProfile.getTopicName());
             // set Message Listener
-            JMSConsumer consumer = jmsContext.createConsumer(topic);
+//            JMSConsumer consumer = jmsContext.createConsumer(topic);
+            JMSConsumer consumer = jmsContext.createDurableConsumer(topic, "subscription1");
+//            JMSConsumer consumer = jmsContext.createSharedConsumer(topic, "subscription1");
+//            JMSConsumer consumer = jmsContext.createSharedDurableConsumer(topic, "subscription1");
             consumer.setMessageListener(new Listener());
             System.out.println("Receiver is ready, waiting for messages...");
             System.out.println("press Ctrl+c to shutdown...");
             while (true) {
                 Thread.sleep(1000);
             }
-        } catch(InterruptedException e) {
+        } catch(InvalidDestinationRuntimeException | InterruptedException e) {
             e.printStackTrace();
         }
     }
