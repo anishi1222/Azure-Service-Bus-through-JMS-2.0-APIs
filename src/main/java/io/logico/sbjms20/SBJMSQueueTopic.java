@@ -35,7 +35,7 @@ public class SBJMSQueueTopic {
                 // send the message to the queue
                 producer.send(queue, msg);
             }
-        } catch (JMSException e) {
+        } catch (JMSRuntimeException e) {
             e.printStackTrace();
         }
     }
@@ -72,7 +72,7 @@ public class SBJMSQueueTopic {
                 // send the message to the queue
                 producer.send(topic, msg);
             }
-        } catch (JMSException e) {
+        } catch (JMSRuntimeException e) {
             e.printStackTrace();
         }
     }
