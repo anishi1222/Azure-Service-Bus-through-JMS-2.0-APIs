@@ -52,7 +52,7 @@ public class SBJMSQueueTopic {
             while (true) {
                 Thread.sleep(1000);
             }
-        } catch(InterruptedException e) {
+        } catch(InterruptedException | JMSRuntimeException e) {
             e.printStackTrace();
         }
     }
