@@ -3,9 +3,9 @@ package io.logico.sbjms20;
 import java.util.Arrays;
 import java.util.Optional;
 
-public class Main {
+class Main {
 
-    public static void main(String... args) {
+    static void main(String... args) {
         if(args.length!=3) {
             System.err.println("Three arguments are required.\njava sbjms20 {BASIC|STANDARD|PREMIUM} {QUEUE|TOPIC} {SEND|RECEIVE}");
             return;

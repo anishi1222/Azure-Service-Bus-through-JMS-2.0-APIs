@@ -1,10 +1,20 @@
 package io.logico.sbjms20;
 
-import com.microsoft.azure.servicebus.jms.ServiceBusJmsConnectionFactory;
-import com.microsoft.azure.servicebus.jms.ServiceBusJmsConnectionFactorySettings;
-
-import javax.jms.*;
 import java.util.Date;
+
+import com.azure.servicebus.jms.ServiceBusJmsConnectionFactory;
+import com.azure.servicebus.jms.ServiceBusJmsConnectionFactorySettings;
+
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.InvalidDestinationRuntimeException;
+import jakarta.jms.JMSConsumer;
+import jakarta.jms.JMSContext;
+import jakarta.jms.JMSException;
+import jakarta.jms.JMSProducer;
+import jakarta.jms.JMSRuntimeException;
+import jakarta.jms.Queue;
+import jakarta.jms.TextMessage;
+import jakarta.jms.Topic;
 
 public class SBJMSQueueTopic {
     final int MAXLOOP = 100;
@@ -35,7 +45,7 @@ public class SBJMSQueueTopic {
                 // send the message to the queue
                 producer.send(queue, msg);
             }
-        } catch (JMSRuntimeException e) {
+        } catch (JMSException | JMSRuntimeException e) {
             e.printStackTrace();
         }
     }
@@ -72,7 +82,7 @@ public class SBJMSQueueTopic {
                 // send the message to the queue
                 producer.send(topic, msg);
             }
-        } catch (JMSRuntimeException e) {
+        } catch (JMSException | JMSRuntimeException e) {
             e.printStackTrace();
         }
     }
